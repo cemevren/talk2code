@@ -9,19 +9,13 @@ import { ChatMessage } from './components/chat-message'
 function App() {
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [listening, setListening] = useState(false)
 
-  const statusMessage = {
-    subscribed: 'Subscribed',
-    unsubscribed: 'Unsubscribed'
-  }
 
   const onSubmit = async (value: string) => {
     const fetchData = async () => {
       setMessages(messages => [...messages, { content: value, role: 'user' }])
 
-      const response = await fetch('/completion', {
+      const response = await fetch('/api/completion', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_message: value, id: 'id' })
@@ -84,7 +78,6 @@ function App() {
                   input={input}
                   setInput={setInput}
                   onSubmit={onSubmit}
-                  isLoading={isLoading}
                 />
               </div>
             </div>

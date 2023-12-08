@@ -14,14 +14,12 @@ export interface PromptProps {
   input: string
   setInput: (value: string) => void
   onSubmit: (value: string) => void
-  isLoading: boolean
 }
 
 export function MessageForm({
   onSubmit,
   input,
   setInput,
-  isLoading
 }: PromptProps) {
   const { formRef, onKeyDown } = useEnterSubmit()
   const inputRef = React.useRef<HTMLTextAreaElement>(null)

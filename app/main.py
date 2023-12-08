@@ -26,7 +26,7 @@ class InferenceRequest(BaseModel):
     user_message: str
 
 
-@app.post("/completion")
+@app.post("/api/completion")
 async def openai_streaming(request: InferenceRequest):
     try:
         stream = qa.completion(user_message=request.user_message)
