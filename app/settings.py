@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from langchain.text_splitter import Language
 
 
@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     loader_exclude_paths: list[str] = ["examples/**"]
     loader_language: Language = Language.PYTHON
     loader_suffixes: list[str] = [".py"]
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
 settings = Settings()

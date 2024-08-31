@@ -12,7 +12,7 @@ settings = Settings()
 
 class LLMModel:
     def __init__(self):
-        self.client = AsyncOpenAI()
+        self.client = AsyncOpenAI(api_key=settings.openai_api_key)
 
     async def completion_stream(self, history: list[ChatCompletionMessageParam]):
         stream = await self.client.chat.completions.create(

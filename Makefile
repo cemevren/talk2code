@@ -6,3 +6,6 @@ test-integration:
 
 dev:
 	pipenv run uvicorn app.main:app --reload
+
+build:
+	sh ./docker/build.sh
