@@ -1,0 +1,40 @@
+# Default values for the PostgreSQL chart.
+
+image:
+  repository: postgres
+  tag: "16.4"
+  pullPolicy: IfNotPresent
+
+postgresql:
+  username: admin
+  password: pgpass
+  database: default
+
+service:
+  type: ClusterIP
+  port: 5432
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 8Gi
+  storageClass: standard
+
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "200m"
+
+# Persistence storage
+volumeMounts:
+  - name: data
+    mountPath: /var/lib/postgresql/data
+    subPath: postgres
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

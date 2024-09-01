@@ -1,0 +1,19 @@
+{{- define "talk2code-backend.name" -}}
+{{- default "talk2code-backend" }}
+{{- end }}
+
+{{- define "talk2code-backend.fullname" -}}
+{{- default "talk2code-backend" }}
+{{- end }}
+
+{{- define "talk2code-backend.labels" -}}
+app.kubernetes.io/name: {{ include "talk2code-backend.name" . }}
+helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{- define "talk2code-backend.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "talk2code-backend.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
