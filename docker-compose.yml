@@ -9,3 +9,21 @@ services:
       - 6336:6336
     volumes:
       - ./data/qdrant:/qdrant/storage
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file: 
+      - ./backend/.env.docker
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
