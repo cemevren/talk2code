@@ -10,6 +10,30 @@ services:
     volumes:
       - ./data/qdrant:/qdrant/storage
 
+  postgres:
+    image: postgres:16.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: talk2code
+      POSTGRES_PASSWORD: talk2code
+      POSTGRES_DB: default
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+
+  prefect-server:
+    image: prefecthq/prefect:2.20.4-python3.11
+    container_name: prefect-server
+    command: prefect server start
+    ports:
+      - "4200:4200"
+    environment:
+      PREFECT_SERVER_API_HOST: 0.0.0.0
+      PREFECT_API_URL: http://127.0.0.1:4200/api
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
   backend:
     build:
       context: ./backend
