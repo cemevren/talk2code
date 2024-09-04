@@ -44,7 +44,7 @@ def repo_info(repo_owner: str = "PrefectHQ", repo_name: str = "prefect"):
 
 """
 prefect work-pool create my_pool --type docker
-prefect worker start --pool "my_pool" 
+prefect worker start --pool "my_pool" --type docker
 """
 
 
