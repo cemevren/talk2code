@@ -80,10 +80,8 @@ Run the following commands to start the system:
 docker compose up --build -d 
 ```
 
-```bash
-[NOTE !]
-When you first run the backend container, it downloads the embedding model. This process may take some time depending on your internet connection.
-```
+> [!NOTE]  
+> When you first run the backend container, it downloads the embedding model. This process may take some time depending on your internet connection.
 
 ### 3. Access the web interface
 
