@@ -25,7 +25,6 @@ class RepoLoader:
                 language=settings.loader_language, parser_threshold=500
             ),
         )
-        print(self.loader.__dict__)
 
     def load(self):
         documents = self.loader.load()

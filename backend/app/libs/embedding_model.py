@@ -10,8 +10,6 @@ def get_embedding_model() -> Embeddings:
     return HuggingFaceBgeEmbeddings(
         model_name=settings.embedding_model_name,
         model_kwargs={"device": device},
-        encode_kwargs={
-            "normalize_embeddings": True
-        },  # set True to compute cosine similarity
+        encode_kwargs={"normalize_embeddings": True},
         query_instruction=prompts["EMBED_QUERY_INSTRUCTION"],
     )
